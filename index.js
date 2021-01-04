@@ -9,6 +9,8 @@ const server = http.Server(app);
 const io = socketIO(server);
 
 
+let port = process.env.PORT || 8080;
+
 const FIELD_WIDTH = 1000, FIELD_HEIGHT = 1000;
 class GameObject{
     constructor(obj={}){
@@ -131,7 +133,7 @@ class BotPlayer extends Player{
         setTimeout(() => {
             const bot = new BotPlayer({nickname: this.nickname});
             players[bot.id] = bot;
-        }, 3000);
+        }, port);
     }
 };
 class Wall extends GameObject{
@@ -225,6 +227,6 @@ app.get('/', (request, response) => {
   response.sendFile(path.join(__dirname, '/static/index.html'));
 });
 
-server.listen(3000, function() {
+server.listen(port, function() {
   console.log('Starting server on port 3000');
 });
