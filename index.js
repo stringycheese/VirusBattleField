@@ -133,7 +133,7 @@ class BotPlayer extends Player{
         setTimeout(() => {
             const bot = new BotPlayer({nickname: this.nickname});
             players[bot.id] = bot;
-        }, port);
+        }, 3000);
     }
 };
 class Wall extends GameObject{
